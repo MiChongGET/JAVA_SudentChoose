@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-/*
- * 用于存放备选课程的list
- * */
+import java.util.Scanner;
 
-public class ListTest {
-	public List coursesToSelect;
-	public ListTest() {
-		// TODO Auto-generated constructor stub
-		this.coursesToSelect = new ArrayList();
+public class SetTest {
+	
+	public List<Course>coursesToSelect;
+	
+	public SetTest(){
+		coursesToSelect = new ArrayList<Course>();
 	}
 	/*
 	 * 用于往courseToSelect中添加备选课程
@@ -84,52 +83,40 @@ public class ListTest {
 			System.out.println("课程"+cr.id+":"+cr.name);
 		}
 	}
-	/*
-	 * 修改list中的元素
-	 * 修改其中一个已经存在的课程
-	 * */
-	public void testModify(){
-		coursesToSelect.set(2, new Course("7", "毛概"));
-	}
-	
-	/*
-	 * 删除list中的元素
-	 * */
-	public void testRemove(){
-		//删除位置4的数据 
-		Course cr = (Course)coursesToSelect.get(4);
-		System.out.println("我是课程："+cr.id+cr.name+"我即将被删除");
-		//coursesToSelect.remove(cr);
-		System.out.println("我已近被删除");
-		/*
-		 * 批量删除(此处删除4,5)
-		 * */
-		Course[] cr2 ={(Course) coursesToSelect.get(4),(Course) coursesToSelect.get(5)};
-		coursesToSelect.removeAll(Arrays.asList(cr2));
-		testForEach();
-		
-		
-	}
 	
 	
-	/*
-	 * 往list中添加一些奇怪的东西
-	 * */
-	
-	public void testType(){
-		System.out.println("能否往list中添加一些奇怪的东西");
-	coursesToSelect.add("我什么也不是");	
-	}
-	
-	public static void main(String[] args){
-		ListTest il = new ListTest();
-		il.testAdd();
-		il.testGet();
-		il.testIterator();
-		il.testForEach();
-		il.testModify();
-		il.testForEach();
-		il.testRemove();
-	}
 
+	public static void main(String[] args) {
+		SetTest st = new SetTest();
+		st.testAdd();
+		st.testForEach();
+		//创建一个学生对象
+		Student student = new Student("1", "小明");
+		System.out.println("欢迎学生"+student.name);
+		//创建一个Scanner对象，用来接收从键盘输入的ID
+		Scanner console = new Scanner(System.in);
+		
+		for(int i =0;i<3;i++){
+			System.out.println("请输入课程ID");
+			String courseId =console.next();
+			for(Course cr:st.coursesToSelect){
+				if(cr.id.equals(courseId)){
+					student.course.add(cr);
+					
+				}
+			}
+		}
+		st.testForEachSet(student);	
+	}
+	
+	//打印输出，学生所选的课程
+	public void testForEachSet(Student student){
+		
+		for(Course cr:student.courses){
+		System.out.println("选择了课程："+cr.id+":"+cr.name);
+		}
+	}
+	
+			
 }
+

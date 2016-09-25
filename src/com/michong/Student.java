@@ -9,11 +9,12 @@ public class Student {
 	public String id;
 	public String name;
 	public Set course;
+	public Set<Course> courses;
 	public Student(String id,String name) {
 		// TODO Auto-generated constructor stub
 		this.id=id;
 		this.name=name;
-		this.course=new HashSet();
+		this.course=new HashSet<Course>();
 	}
 
 }
