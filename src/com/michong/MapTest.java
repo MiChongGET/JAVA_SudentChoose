@@ -26,6 +26,7 @@ public class MapTest {
 		//输入学生的ID和姓名
 		Scanner console = new Scanner(System.in);
 		int i =0;
+		//设定可以输入三个学生
 		while(i<3){
 			System.out.println("请输入学生的ID:");
 			String ID = console.next();
@@ -72,6 +73,7 @@ public class MapTest {
 		MapTest mt = new MapTest();
 		mt.testPut();
 		mt.testKeySet();
+		
 		
 	}
 
