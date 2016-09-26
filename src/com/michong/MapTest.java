@@ -44,7 +44,7 @@ public class MapTest {
 			i++;
 			}else{
 				System.out.println("ID已经被占用");
-				continue;
+				continue;//设置继续执行循环
 			}
 			
 		}
