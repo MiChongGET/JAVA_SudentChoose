@@ -64,7 +64,6 @@ public class MapTest {
 			Student st = students.get(stuId);
 			if(st!=null){
 				System.out.println("Ñ§Éú£º"+st.name);
-				
 			}
 			
 		}
