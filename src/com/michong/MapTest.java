@@ -2,6 +2,7 @@ package com.michong;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -68,10 +69,48 @@ public class MapTest {
 			
 		}
 	}
+	
+	/**
+	 * 测试删除Map中的映射
+	 */
+	public void testRemove() {
+		// 获取从键盘输入的待删除学生ID字符串
+		Scanner console = new Scanner(System.in);
+		while (true) {
+			// 提示输入待删除的学生的ID
+			System.out.println("请输入要删除的学生ID！");
+			String ID = console.next();
+			// 判断该ID是否有对应的学生对象
+			Student st = students.get(ID);
+			if (st == null) {
+				// 提示输入的ID并不存在
+				System.out.println("该ID不存在！");
+				continue;
+			}
+			students.remove(ID);
+			System.out.println("成功删除学生：" + st.name);
+			break;
+		}
+	}
+
+	/**
+	 * 通过entrySet方法来遍历Map
+	 */
+	public void testEntrySet() {
+		// 通过entrySet方法，返回Map中的所有键值对
+		Set<Entry<String, Student>> entrySet = students.entrySet();
+		for (Entry<String, Student> entry : entrySet) {
+			System.out.println("取得键：" + entry.getKey());
+			System.out.println("对应的值为：" + entry.getValue().name);
+		}
+	}
+
 	public static void main(String[] args) {
 		MapTest mt = new MapTest();
 		mt.testPut();
 		mt.testKeySet();
+		mt.testRemove();
+		mt.testEntrySet();
 		
 		
 	}
