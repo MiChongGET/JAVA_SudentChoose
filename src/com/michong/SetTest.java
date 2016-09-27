@@ -84,7 +84,16 @@ public class SetTest {
 		}
 	}
 	
-	
+	/*
+	 * 测试List的contains方法
+	 * */
+	public void testListContains(){
+		//取得备选课程序列的第0个元素
+		Course course = coursesToSelect.get(0);
+		//打印输出coursesToSelected是否包含course对象
+		System.out.println("取得课程："+course.name);
+		System.out.println("备选课程中是否包含课程："+course.name+","+coursesToSelect.contains(course));
+	}
 
 	public static void main(String[] args) {
 		SetTest st = new SetTest();
