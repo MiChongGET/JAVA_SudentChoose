@@ -9,9 +9,12 @@ import java.util.Scanner;
 public class SetTest {
 	
 	public List<Course>coursesToSelect;
+	private Scanner console;
+	public Student student;
 	
 	public SetTest(){
 		coursesToSelect = new ArrayList<Course>();
+		console = new Scanner(System.in);
 	}
 	/*
 	 * 用于往courseToSelect中添加备选课程
@@ -75,7 +78,8 @@ public class SetTest {
 	
 	
 	/*
-	 * 通过foreach方法访问集合元素*/
+	 * 通过foreach方法访问集合元素
+	 * */
 	public void testForEach(){
 		System.out.println("通过foreach方法访问集合元素:");
 		for(Object obj:coursesToSelect){
@@ -93,13 +97,24 @@ public class SetTest {
 		//打印输出coursesToSelected是否包含course对象
 		System.out.println("取得课程："+course.name);
 		System.out.println("备选课程中是否包含课程："+course.name+","+coursesToSelect.contains(course));
+		
+		//提示输入课程名称
+		System.out.println("请输入课程名称:");
+		String name = console.next();
+		
+		//创建一个新的课程对象，ID和名称，与course对象完全一样
+		Course course2 = new Course();
+		course2.name = name;
+		System.out.println("新创建课程："+course2.name);
+		System.out.println("备选课程中是否包含课程："+course2.name+","+coursesToSelect.contains(course2));
+		
 	}
-
-	public static void main(String[] args) {
-		SetTest st = new SetTest();
-		st.testAdd();
-		st.testForEach();
-		//创建一个学生对象
+	
+	
+	/*
+	 * 创建学生对象并选课
+	 * */
+	public void creatStudentAndSelectCours(){
 		Student student = new Student("1", "小明");
 		System.out.println("欢迎学生"+student.name);
 		//创建一个Scanner对象，用来接收从键盘输入的ID
@@ -108,19 +123,59 @@ public class SetTest {
 		for(int i =0;i<3;i++){
 			System.out.println("请输入课程ID");
 			String courseId =console.next();
-			for(Course cr:st.coursesToSelect){
+			for(Course cr:coursesToSelect){
 				if(cr.id.equals(courseId)){
 					student.course.add(cr);
-					
 				}
 			}
 		}
-		st.testForEachSet(student);	
+		testForEachSet(student);	
+	}
+
+	/*
+	 * 测试Set的contains方法
+	 * */
+	public void testSetContains(){
+		//提示输入课程名称
+		System.out.println("请输入学生已选课程的名称：");
+		String name = console.next();
+		Course course2= new Course();
+		course2.name = name;
+		System.out.println("新创建课程："+course2.name);
+		System.out.println("备选课程中是否包含课程："+course2.name+","+student.courses.contains(course2));
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		SetTest st = new SetTest();
+		st.testAdd();
+		//st.testListContains();
+		st.testForEach();
+		st.creatStudentAndSelectCours();
+		st.testSetContains();
+//	    st.testListContains();
+//		//创建一个学生对象
+//		Student student = new Student("1", "小明");
+//		System.out.println("欢迎学生"+student.name);
+//		//创建一个Scanner对象，用来接收从键盘输入的ID
+//		Scanner console = new Scanner(System.in);
+//		
+//		for(int i =0;i<3;i++){
+//			System.out.println("请输入课程ID");
+//			String courseId =console.next();
+//			for(Course cr:st.coursesToSelect){
+//				if(cr.id.equals(courseId)){
+//					student.course.add(cr);
+//					
+//				}
+//			}
+//		}
+//        st.testForEachSet(student);	
 	}
 	
 	//打印输出，学生所选的课程
 	public void testForEachSet(Student student){
-		
 		for(Course cr:student.courses){
 		System.out.println("选择了课程："+cr.id+":"+cr.name);
 		}
