@@ -104,12 +104,43 @@ public class MapTest {
 			System.out.println("对应的值为：" + entry.getValue().name);
 		}
 	}
+	
+	/*
+	 * 利用put方法修改Map中的已有映射
+	 * */
+	public void testModify(){
+		//提示输入要修改的学生ID
+		System.out.println("请输入要修改的学生ID");
+		//创建一个Scanner对象，去获取从键盘上输入的学生ID字符串
+		Scanner console = new Scanner(System.in);
+		while(true){
+			//取得从键盘上输入学生id
+			String stuID  = console.next();
+			//从students中查找该学生ID对应的学生对象
+			Student student = students.get(stuID);
+			if(student==null){
+				System.out.println("该ID不存在！请重新输入！");
+				continue;
+			}
+			//提示当前对应的学生对象的姓名
+			System.out.println("当前该学生的ID所对应的学生为："+student.name);
+			//提示输入新的学生姓名，来修改已有的映射
+			System.out.println("请输入新的学生姓名");
+			String name = console.next();
+			Student newStudent = new Student(stuID,name);
+			System.out.println("修改成功！！！");
+			break;
+			
+		}
+	}
 
 	public static void main(String[] args) {
 		MapTest mt = new MapTest();
 		mt.testPut();
 		mt.testKeySet();
-		mt.testRemove();
+//		mt.testRemove();
+//		mt.testEntrySet();
+		mt.testModify();
 		mt.testEntrySet();
 		
 		
