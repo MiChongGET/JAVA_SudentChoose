@@ -57,7 +57,6 @@ public class MapTest {
 	public void testKeySet(){
 		//通过keySet方法，返回Map中的所有“键”的Set集合
 		Set<String> keySet = students.keySet();
-		
 		//取得students的容量
 		System.out.println("总共有："+students.size()+"个学生！");
 		//遍历keySet，取得每一个键，再调用get方法取得每一个键对应的value
@@ -134,14 +133,40 @@ public class MapTest {
 		}
 	}
 
+	/*
+	 * 测试Map中，是否包含某个Key值或者某个Value值
+	 * */
+	public void testContainsKeyOrValue(){
+		//提示输入学生的ID
+		System.out.println("请输入要查询的学生ID：");
+		Scanner console = new Scanner(System.in);
+		String id = console.next();
+		//在Map中，用containsKey()方法，来判断是否包含某个Key值
+		System.out.println("您输入的学生ID为:"+id+",在学生映射表中是否存在:"
+				+students.containsKey(id));
+		if(students.containsKey(id)){
+		System.out.println("对应的学生为:"+students.get(id).name);
+		}
+		
+		//提示输入要查询的学生姓名
+		System.out.println("请输入要查询的的学生姓名:");
+		String name = console.next();
+		//用containsValue()方法，来判断是否包含某个Value值
+		if(students.containsValue(new Student(null,name))){
+			System.out.println("映射表中确实包含该学生:"+name);
+		}
+		else
+			System.out.println("该学生不存在");
+	}
 	public static void main(String[] args) {
 		MapTest mt = new MapTest();
 		mt.testPut();
 		mt.testKeySet();
 //		mt.testRemove();
 //		mt.testEntrySet();
-		mt.testModify();
-		mt.testEntrySet();
+//		mt.testModify();
+//		mt.testEntrySet();
+		mt.testContainsKeyOrValue();
 		
 		
 	}

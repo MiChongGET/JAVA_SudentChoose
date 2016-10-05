@@ -108,6 +108,11 @@ public class SetTest {
 		System.out.println("新创建课程："+course2.name);
 		System.out.println("备选课程中是否包含课程："+course2.name+","+coursesToSelect.contains(course2));
 		
+		//通过indexOf方法取得某元素的索引位置
+		if(coursesToSelect.contains(course2)){
+			System.out.println("课程:"+course2.name+"的索引位置为："+coursesToSelect.indexOf(course2));
+			
+		}
 	}
 	
 	
@@ -150,10 +155,10 @@ public class SetTest {
 	public static void main(String[] args) {
 		SetTest st = new SetTest();
 		st.testAdd();
-		//st.testListContains();
+		st.testListContains();
 		st.testForEach();
-		st.creatStudentAndSelectCours();
-		st.testSetContains();
+//		st.creatStudentAndSelectCours();
+//		st.testSetContains();
 //	    st.testListContains();
 //		//创建一个学生对象
 //		Student student = new Student("1", "小明");
