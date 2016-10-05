@@ -5,7 +5,8 @@ import java.util.Set;
 /*
  * 学生类*/
 
-public class Student {
+//Comparable定义默认的接口
+public class Student implements Comparable<Student> {
 	public String id;
 	public String name;
 	public Set course;
@@ -38,6 +39,11 @@ public class Student {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+	@Override
+	public int compareTo(Student o) {
+		// TODO Auto-generated method stub
+		return this.id.compareTo(o.id);
 	}
 	
 
